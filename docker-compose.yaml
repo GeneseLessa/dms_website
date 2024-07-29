@@ -1,0 +1,21 @@
+services:
+  gariobald_db:
+    container_name: gariobald_db
+    image: mongo:4.4
+    ports:
+      - 27017:27017
+    volumes:
+      - ./volumes/data:/data/db
+      - ./volumes/mongo-init:/docker-entrypoint-initdb.d:ro
+
+  gariobald_backend:
+    container_name: gariobald_backend
+    build: ./backend/
+    depends_on:
+      - gariobald_db
+    ports:
+      - 3000:3000
+    env_file:
+      - ./envs/gariobald-backend.env
+    volumes:
+      - ./backend/source/:/app/source
