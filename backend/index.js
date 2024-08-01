@@ -1,5 +1,3 @@
-import Server from "./source/configs/server.js";
-
-const server = new Server();
+import server from "./source/setup/server.js";
 
 server.listen();
