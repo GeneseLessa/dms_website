@@ -9,7 +9,11 @@ import authenticate from "./actions/authenticate.js";
 
 import user from "./models/users.js";
 
+import Auth from "../../middlewares/authorization.js";
+
 const actions = new CRUDActions(user);
+const auth = new Auth();
+
 const router = Router();
 
 router.post("/first-user", validateFirstUser, (req, res) =>
@@ -22,9 +26,9 @@ router.post(
   authenticate.checkLogin.bind(authenticate),
 );
 
-router.post("/create", actions.create.bind(actions));
-router.post("/read", actions.read.bind(actions));
-router.post("/update", actions.update.bind(actions));
-router.post("/delete", actions.delete.bind(actions));
+router.post("/create", auth.exec.bind(auth), actions.create.bind(actions));
+router.post("/read", auth.exec.bind(auth), actions.read.bind(actions));
+router.post("/update", auth.exec.bind(auth), actions.update.bind(actions));
+router.post("/delete", auth.exec.bind(auth), actions.delete.bind(actions));
 
 export default router;
