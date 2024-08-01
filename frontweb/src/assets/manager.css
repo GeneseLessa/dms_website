@@ -1,0 +1,74 @@
+@import "./main.css";
+
+:root {
+  --primary: #494241;
+  --secondary: #6c6c6c;
+  --text: #494241;
+  --light: #cec7c6;
+  --border: #cec7c6;
+  --shadow: 1px 1px 5px #cec7c6;
+  --light-grey: #dddddd;
+  --clearly: white;
+}
+
+body {
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 400;
+  color: var(--text);
+  background: var(--light-grey);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 300;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+  padding: 5px;
+  border: 0.7px solid var(--border);
+  border-radius: 7px;
+  width: 100%;
+  font-size: 0.9rem;
+}
+
+input:focus {
+  outline: none;
+  border: 0.7px solid var(--primary);
+}
+
+::placeholder {
+  font-size: 0.8rem;
+}
+
+.button {
+  padding: 5px 10px;
+  background-color: var(--primary);
+  border: 0.5px solid var(--secondary);
+  border-radius: 7px;
+  font-size: 0.9rem;
+  color: var(--light);
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: var(--secondary);
+}
+
+.content-box {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 10px;
+  background: var(--clearly);
+  border: 0.5px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+}
