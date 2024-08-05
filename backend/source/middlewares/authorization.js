@@ -16,12 +16,12 @@ class Authorization {
   }
 
   exec(req, res, next) {
-    const { token } = req.headers;
+    const { authorization } = req.headers;
     const errorObject = { error: true, result: "Autorização negada" };
 
-    if (!token) return res.status(400).json(errorObject);
+    if (!authorization) return res.status(400).json(errorObject);
 
-    const rawToken = token.split(" ")[1];
+    const rawToken = authorization.split(" ")[1];
     const decoded = this._decode(rawToken);
 
     if (decoded?.error) return res.status(400).json(errorObject);

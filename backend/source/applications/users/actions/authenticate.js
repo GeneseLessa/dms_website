@@ -24,13 +24,13 @@ class Authenticate {
     if (!user)
       return res.status(400).json({
         error: true,
-        result: defaultMessage,
+        result: [defaultMessage],
       });
 
     if (!user.access?.isActive)
       return res.status(500).json({
         error: true,
-        result: "O seu usuário encontra-se inativo",
+        result: ["O seu usuário encontra-se inativo"],
       });
 
     const passwordsMatch = await bcrypt.compare(
@@ -41,7 +41,7 @@ class Authenticate {
     if (!passwordsMatch) {
       return res.status(400).json({
         error: true,
-        result: defaultMessage,
+        result: [defaultMessage],
       });
     }
 

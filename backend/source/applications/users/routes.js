@@ -6,6 +6,7 @@ import validateFirstUser from "./middlewares/validate-first-user.js";
 
 import firstUser from "./actions/first-user.js";
 import authenticate from "./actions/authenticate.js";
+import hasUsers from "./actions/has-users.js";
 
 import user from "./models/users.js";
 
@@ -24,6 +25,12 @@ router.post(
   "/authenticate",
   validateLogin,
   authenticate.checkLogin.bind(authenticate),
+);
+
+router.post("/has-users", (req, res) => hasUsers(req, res));
+
+router.post("/is-authenticated", auth.exec.bind(auth), (_, res) =>
+  res.json({ error: false }),
 );
 
 router.post("/create", auth.exec.bind(auth), actions.create.bind(actions));
