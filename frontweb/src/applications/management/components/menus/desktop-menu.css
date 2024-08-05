@@ -1,0 +1,35 @@
+#desktopMenu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 15px 40px;
+  background-color: var(--primary);
+  color: var(--clearly);
+  font-size: 1.4rem;
+}
+
+.lateralContent {
+  display: flex;
+  gap: 50px;
+}
+
+a {
+  text-decoration: none;
+  color: var(--clearly);
+}
+
+.confirmation {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  padding: 20px 50px;
+  gap: 20px;
+  background-color: var(--secondary);
+  color: var(--clearly);
+  right: 5px;
+  top: 60px;
+  font-size: 0.8rem;
+  border: none;
+  border-radius: 10px;
+}

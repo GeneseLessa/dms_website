@@ -9,6 +9,7 @@
   --shadow: 1px 1px 5px #cec7c6;
   --light-grey: #dddddd;
   --clearly: white;
+  --error: orange;
 }
 
 body {
@@ -71,4 +72,18 @@ input:focus {
   border-radius: 10px;
   padding: 20px;
   box-shadow: var(--shadow);
+}
+
+.message {
+  font-weight: 600;
+}
+
+.message.error {
+  color: var(--error);
+}
+
+.mainContent {
+  line-height: 3rem;
+  width: 100%;
+  padding: 20px 50px;
 }

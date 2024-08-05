@@ -1,19 +1,17 @@
 import axios from "axios";
 
-const instance = axios.create({
-  baseURL: "http://localhost:3000/",
-  headers: {
-    "Content-Type": "application/json",
-  },
-});
-
-instance.interceptors.request.use(
+axios.interceptors.request.use(
   (config) => {
+    const api = "http://localhost:3000/";
+    const token = localStorage.getItem("gariobald");
+
+    if (token) config.headers.Authorization = `gariobald ${token}`;
+
+    config.url = api + config.url;
+
     return config;
   },
-  (error) => {
-    return Promise.reject(error);
-  },
+  (error) => Promise.reject(error),
 );
 
-export default instance;
+export default axios;

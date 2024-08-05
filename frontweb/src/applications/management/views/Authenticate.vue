@@ -1,28 +1,25 @@
 <template>
   <div id="authentication" class="animate__animated animate__fadeInDown">
-    <FirstUser v-if="users.length < 1" class="box-size" />
-    <AuthenticateForm v-else class="box-size" />
+    <AuthenticateForm v-if="hasUsers" class="box-size" />
+    <FirstUser v-else class="box-size" @userCreated="hasUsers = true" />
   </div>
 </template>
 
 <script setup>
 import { ref, onBeforeMount } from "vue";
+
 import "/src/assets/manager.css";
+import axios from "@/helpers/axios";
 
 import AuthenticateForm from "../components/forms/AuthenticateForm.vue";
 import FirstUser from "../components/forms/FirstUser.vue";
 
 const users = ref([]);
-const loading = ref(false);
+const hasUsers = ref(true);
 
-const getUsers = () => {
-  // here I can get the alients
-  users.value.push(1);
-  console.log("montado");
-};
-
-onBeforeMount(() => {
-  console.log("antes de montar");
+onBeforeMount(async () => {
+  const response = await axios.post("users/has-users");
+  hasUsers.value = response.data.result;
 });
 </script>
 
