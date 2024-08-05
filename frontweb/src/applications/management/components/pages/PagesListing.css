@@ -1,0 +1,21 @@
+.listing {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.item {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  background-color: var(--light-grey);
+  padding: 5px 10px;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.item:hover {
+  background-color: var(--light);
+  transition: 0.4s;
+}

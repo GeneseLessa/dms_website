@@ -1,7 +1,7 @@
 <template>
   <div id="management" v-if="showContent">
     <DesktopMenu />
-    <RouterView name="main" />
+    <RouterView name="main" class="animate__animated animate__fadeIn" />
   </div>
 </template>
 

@@ -1,8 +1,10 @@
 <template>
   <div id="desktopMenu" class="animate__animated animate__fadeInDown">
     <div class="lateralContent">
-      <i class="home icon"></i>
-      <RouterLink to="/">Páginas</RouterLink>
+      <RouterLink :to="{ name: 'welcome' }">
+        <i class="home icon"></i>
+      </RouterLink>
+      <RouterLink :to="{ name: 'pages' }">Páginas</RouterLink>
       <RouterLink to="/">Usuários</RouterLink>
       <RouterLink to="/">Configurações</RouterLink>
     </div>
