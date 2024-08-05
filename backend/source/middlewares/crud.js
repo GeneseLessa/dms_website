@@ -10,9 +10,9 @@ class CRUDActions {
 
     try {
       const result = await this.model.create(body.values);
-      res.json({ failed: false, result });
+      return res.json({ failed: false, result });
     } catch (error) {
-      res.json(classificateError(error));
+      return res.json(classificateError(error));
     }
   }
 

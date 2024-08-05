@@ -13,6 +13,8 @@ const pageSchema = new mongoose.Schema(
     isHome: { type: Boolean, default: false },
     isPublished: { type: Boolean, default: true },
     isPrivate: { type: Boolean, default: false },
+    isExternal: { type: Boolean, default: false },
+    link: String,
     contents: [
       {
         item: mongoose.Types.ObjectId,
