@@ -44,6 +44,7 @@ textarea {
   border-radius: 7px;
   width: 100%;
   font-size: 0.9rem;
+  color: var(--secondary);
 }
 
 input:focus {
@@ -53,6 +54,11 @@ input:focus {
 
 ::placeholder {
   font-size: 0.8rem;
+}
+
+label {
+  font-weight: 500;
+  color: var(--secondary);
 }
 
 .button {

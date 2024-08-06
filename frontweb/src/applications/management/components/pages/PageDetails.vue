@@ -1,5 +1,6 @@
 <template>
   <div id="pageDetails">
+    <!-- loading item -->
     <div v-if="loading">
       <i class="spinner loading icon" />
       Carregando dados...
@@ -45,7 +46,7 @@
       </div>
 
       <div style="display: flex; gap: 10px; margin-top: 10px">
-        <button class="button">Editar</button>
+        <button class="button" @click="$emit('edit')">Editar</button>
         <button class="button secondary" @click="$emit('reset')">Voltar</button>
       </div>
     </div>
@@ -57,9 +58,7 @@ import axios from "@/helpers/axios.js";
 
 export default {
   name: "PageDetails",
-  props: {
-    page: String,
-  },
+  props: ["page"],
   data() {
     return {
       loading: false,

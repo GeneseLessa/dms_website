@@ -15,10 +15,19 @@
           />
         </div>
 
-        <div class="content-box" v-if="pageToDetail">
+        <div class="content-box" v-if="pageToDetail && !pageEditing">
           <PageDetails
             :page="pageToDetail"
             @reset="reset"
+            @edit="pageEditing = true"
+            class="animate__animated animate__fadeIn"
+          />
+        </div>
+
+        <div class="content-box" v-if="pageEditing">
+          <PageEdit
+            :page="pageToDetail"
+            @done="pageEditing = false"
             class="animate__animated animate__fadeIn"
           />
         </div>
@@ -31,6 +40,13 @@
             class="animate__animated animate__fadeIn"
           />
         </div>
+
+        <div class="content-box" v-if="pageToDetail">
+          <PageContents
+            :page="pageToDetail"
+            class="animate__animated animate__fadeIn"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -40,10 +56,12 @@
 import PageForm from "../components/pages/PageForm.vue";
 import PagesListing from "../components/pages/PagesListing.vue";
 import PageDetails from "../components/pages/PageDetails.vue";
+import PageContents from "../components/pages/PageContents.vue";
+import PageEdit from "../components/pages/PageEdit.vue";
 
 export default {
   name: "PagesView",
-  components: { PageForm, PagesListing, PageDetails },
+  components: { PageForm, PagesListing, PageDetails, PageContents, PageEdit },
   data() {
     return {
       pageToUpdate: null,
@@ -51,6 +69,7 @@ export default {
       pageToDetailComponents: null,
       pageCreating: true,
       pageListing: true,
+      pageEditing: false,
       reload: false,
     };
   },
@@ -64,6 +83,7 @@ export default {
       this.pageListing = true;
       this.reload = true;
     },
+
     showDetails(page) {
       this.pageListing = false;
       this.pageToDetail = page;
